@@ -1,0 +1,133 @@
+*{
+    font-family: 'Lato', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transform: skewY(-3deg);
+    transform: skewY(-3deg);
+    -webkit-transform-origin: 0;
+    transform-origin: 0;
+    background-color: hsl(217, 71%, 53%);
+}
+
+.hero-zora {
+    position: relative;
+}
+
+.zora-photo {
+    z-index: 1;
+    position: absolute;
+    top: 18%;
+    pointer-events: none;
+    right: 12%;
+    width: 400px;
+    margin-left: -10px;
+}
+
+.card {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.peoplecard img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.anchor {
+    margin-top: -70px;
+    padding-top: 70px;
+}
+
+#people::before {
+    content: '';
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    top: 20px;
+    height: 570px;
+    background: hsl(217, 71%, 53%);
+    transform: skewY(3deg);
+    transform-origin: top left;
+    z-index: -1;
+}
+
+#people {
+    margin-bottom: 50px;
+}
+
+#people .fa-twitter-square, 
+#people .fa-linkedin,
+#people .fa-github-square,
+#people .fa-facebook-square {
+    color: hsl(0, 0%, 86%);
+}
+
+#people .fa-twitter-square:hover, 
+#people .fa-linkedin:hover,
+#people .fa-github-square:hover,
+#people .fa-facebook-square:hover {
+    color: hsl(0, 0%, 100%);
+}
+
+#projects, #people {
+    margin-top: 25px;
+}
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top .fa-caret-up {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 19px;
+    top: 13px;
+    font-size: 22px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top.is-visible {
+    display: block !important;
+}
+
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
