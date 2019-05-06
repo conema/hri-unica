@@ -1,0 +1,44 @@
+{
+    "array": [
+      {
+        "name": "Diego Reforgiato Recupero",
+        "photo": "img/diego.jpg",
+        "role": "Director",
+        "linkedin": "",
+        "facebook": "",
+        "twitter": "",
+        "github": "none",
+        "website": ""
+      },
+      {
+        "name": "Emanuele Concas",
+        "photo": "https://pbs.twimg.com/profile_images/1025746020456701952/VUi_vWTE_400x400.jpg",
+        "role": "Researcher",
+        "linkedin": "",
+        "facebook": "",
+        "twitter": "",
+        "github": "",
+        "website": ""
+      },
+      {
+        "name": "Rubén Alonso",
+        "photo": "https://www.r2msolution.com/wp-content/uploads/2019/01/Staff-29.jpg",
+        "role": "Researcher",
+        "linkedin": "",
+        "facebook": "",
+        "twitter": "",
+        "github": "none",
+        "website": ""
+      },
+      {
+        "name": "Massimiliano Raciti",
+        "photo": "https://www.r2msolution.com/wp-content/uploads/2019/01/Staff-31.jpg",
+        "role": "Researcher",
+        "linkedin": "",
+        "facebook": "",
+        "twitter": "",
+        "github": "none",
+        "website": ""
+      }
+    ]
+  }

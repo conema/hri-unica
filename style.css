@@ -52,36 +52,63 @@ html {
 #people::before {
     content: '';
     position: absolute;
-    left: -10%;
-    width: 120%;
-    top: 20px;
-    height: 570px;
+    left: -25%;
+    width: 150%;
+    top: 10px;
+    height: 350px;
     background: hsl(217, 71%, 53%);
     transform: skewY(3deg);
     transform-origin: top left;
     z-index: -1;
 }
 
+.slider-navigation-next {
+    padding-left: 5px;
+}
+
+.slider-navigation-next,
+.slider-navigation-previous,
+.slider-page {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #fff;
+}
+
 #people {
     margin-bottom: 50px;
+}
+
+#people-list h3 {
+    line-height: 20px;
 }
 
 #people .fa-twitter-square, 
 #people .fa-linkedin,
 #people .fa-github-square,
-#people .fa-facebook-square {
+#people .fa-facebook-square,
+#people .fa-globe {
     color: hsl(0, 0%, 86%);
 }
 
 #people .fa-twitter-square:hover, 
 #people .fa-linkedin:hover,
 #people .fa-github-square:hover,
-#people .fa-facebook-square:hover {
+#people .fa-facebook-square:hover,
+#people .fa-globe:hover {
     color: hsl(0, 0%, 100%);
 }
 
 #projects, #people {
     margin-top: 25px;
+}
+
+#project-list .thumb-logo {
+    width: 250px;
+    height: auto;
+    margin: auto;
+}
+
+#project-list .thumb-img {
+    object-fit: cover;
 }
 
 #return-to-top {
@@ -130,4 +157,16 @@ html {
 #return-to-top:hover i {
     color: #fff;
     top: 5px;
+}
+
+@media only screen and (max-width: 882px) {
+    .zora-photo {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #people::before {
+        height: 100%;
+    }
 }
