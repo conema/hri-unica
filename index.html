@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-    
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>  
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="script.js"></script>
 </head>
 
@@ -40,14 +40,14 @@
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
+                    <a class="navbar-item" href="#research">
+                        Research
+                    </a>
                     <a class="navbar-item" href="#projects">
                         Projects
                     </a>
                     <a class="navbar-item" href="#people">
                         People
-                    </a>
-                    <a class="navbar-item" href="#research">
-                        Research
                     </a>
                     <a class="navbar-item" href="#publications">
                         Publications
@@ -89,123 +89,341 @@
     </section>
 
     <!-- Research -->
-    <div id="research" class="container anchor">
-        <div class="section-header columns has-text-centered is-centered">
-            <div class="column is-6">
-                <h2 class="title">Research</h2>
+    <section class="section">
+        <div id="research" class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">Research</h2>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Projects -->
-    <div id="projects" class="container anchor">
-        <div class="section-header columns has-text-centered is-centered">
-            <div class="column is-6">
-                <h2 class="title">Projects</h2>
+    <section class="section">
+        <div id="projects" class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">Projects</h2>
+                </div>
+            </div>
+
+            <div id="project-list" class="columns is-centered has-text-centered">
+
             </div>
         </div>
-
-        <div id="project-list" class="columns is-centered has-text-centered">
-
-        </div>
-    </div>
+    </section>
 
     <!-- People -->
-    <div id="people" class="container anchor">
+    <section id="people" class="section">
+        <div class="container anchor">
             <div class="section-header columns has-text-centered is-centered">
                 <div class="column is-6">
                     <h2 class="title has-text-white">People</h2>
                 </div>
             </div>
-    
+
             <div id="people-list" class="columns is-centered has-text-centered">
-                
+
             </div>
         </div>
+    </section>
 
     <!-- Publications -->
-    <div id="publications" class="container anchor">
-        <div class="section-header columns has-text-centered is-centered">
-            <div class="column is-6">
-                <h2 class="title">Publications</h2>
+    <section class="section">
+        <div id="publications" class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">Publications</h2>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="container">
+            <div class="tabs is-centered">
+                <ul>
+                    <li class="is-active" data-tab="1"><a>All</a></li>
+                    <li data-tab="2"><a>2019</a></li>
+                    <li data-tab="3"><a>2018</a></li>
+                    <li data-tab="4"><a>2017</a></li>
+                </ul>
+            </div>
+
+            <div id="tab-content">
+                <div class="tab is-active" data-content="1">
+                    <span class="tag is-dark is-medium">2019</span>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Zarei S., Mohammadpour A., Ingrassia S., Punzo A. <br>
+                                        <span class="has-text-weight-bold">On the use of the sub-Gaussian α-stable
+                                            distribution
+                                            in the Cluster-Weighted Model</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                    <li>
+                                        Mazza A. and Punzo A. <br>
+                                        <span class="has-text-weight-bold">Mixtures of
+                                            multivariate contaminated normal regression</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Maruotti A., Punzo A. and Bagnato L <br>
+                                        <span class="has-text-weight-bold">Hidden Markov and semi-Markov models with
+                                            multivariate leptokurtic-normal components for robust modeling of daily
+                                            returns
+                                            series</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1093/jjfinec/nby019</a>
+                                    </li>
+                                    <li>
+                                        Zarei S., Mohammadpour A., Ingrassia S., Punzo A. <br>
+                                        <span class="has-text-weight-bold">On the use of the sub-Gaussian α-stable
+                                            distribution
+                                            in the Cluster-Weighted Model</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="tag is-dark is-medium">2018</span>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Mazza A. and Punzo A. <br>
+                                        <span class="has-text-weight-bold">Mixtures of
+                                            multivariate contaminated normal regression</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                    <li>
+                                        Maruotti A., Punzo A. and Bagnato L <br>
+                                        <span class="has-text-weight-bold">Hidden Markov and semi-Markov models with
+                                            multivariate leptokurtic-normal components for robust modeling of daily
+                                            returns
+                                            series</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1093/jjfinec/nby019</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Zarei S., Mohammadpour A., Ingrassia S., Punzo A. <br>
+                                        <span class="has-text-weight-bold">On the use of the sub-Gaussian α-stable
+                                            distribution
+                                            in the Cluster-Weighted Model</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab" data-content="2">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Zarei S., Mohammadpour A., Ingrassia S., Punzo A. <br>
+                                        <span class="has-text-weight-bold">On the use of the sub-Gaussian α-stable
+                                            distribution
+                                            in the Cluster-Weighted Model</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                    <li>
+                                        Mazza A. and Punzo A. <br>
+                                        <span class="has-text-weight-bold"> Mixtures of
+                                            multivariate contaminated normal regression</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <ul>
+                                    <li>
+                                        Maruotti A., Punzo A. and Bagnato L <br>
+                                        <span class="has-text-weight-bold">Hidden Markov and semi-Markov models with
+                                            multivariate leptokurtic-normal components for robust modeling of daily
+                                            returns
+                                            series</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1093/jjfinec/nby019</a>
+                                    </li>
+                                    <li>
+                                        Zarei S., Mohammadpour A., Ingrassia S., Punzo A. <br>
+                                        <span class="has-text-weight-bold">On the use of the sub-Gaussian α-stable
+                                            distribution
+                                            in the Cluster-Weighted Model</span><br>
+                                        Iranian Journal of Science and Technology<br>
+                                        Transactions A: Science<br>
+                                        DOI: 10.1007/s40995-018-0526-8<br>
+                                        <a href="">https://dx.doi.org/10.1007/s00362-017-0964-y</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab" data-content="3">
+
+                </div>
+                <div class="tab" data-content="4">
+
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Resources -->
-    <div id="resources" class="container anchor">
-        <div class="section-header columns has-text-centered is-centered">
-            <div class="column is-6">
-                <h2 class="title">Resources</h2>
+    <section class="section">
+        <div id="resources" class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">Resources</h2>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Media -->
-    <div id="media" class="container anchor">
-        <div class="section-header columns has-text-centered is-centered">
-            <div class="column is-6">
-                <h2 class="title">Media</h2>
+    <section class="section">
+        <div id="media" class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">Media</h2>
+                </div>
+            </div>
+
+            <div class="container">
+                <div id="video-carousel" class="columns">
+
+                </div>
             </div>
         </div>
+    </section>
 
-        <section class="section">
-            <div id="carousel" class="carousel">
-              <div class="card">
-                <div class="card-image">
-                  <figure class="image video-container is-16by9">
-                    <a class="open-modal" data="https://www.youtube.com/embed/OePbvELNJ54">
-                        <img src="https://img.youtube.com/vi/OePbvELNJ54/maxresdefault.jpg" alt="" srcset="">
-                    </a>
-                  </figure>
+    <!-- In collaboration -->
+    <section id="collaboration" class="section">
+        <div class="container anchor">
+            <div class="section-header columns has-text-centered is-centered">
+                <div class="column is-6">
+                    <h2 class="title">In collaboration with</h2>
                 </div>
-                <div class="card-content">
-                  <div class="title is-5">
-                    Play Chess With Zora
-                  </div>
-                  <div class="subtitle is-6">
-                    Playing chess with Zora, that is connected to Google Assistant
-                  </div>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card-image">
-                    <figure class="image video-container is-16by9">
-                        <a class="open-modal" data="https://www.youtube.com/embed/rrvY-f9Vz58">
-                            <img src="https://i.ytimg.com/vi/rrvY-f9Vz58/maxresdefault.jpg" alt="" srcset="">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                  <div class="title is-5">
-                    Zora controlling light
-                  </div>
-                  <div class="subtitle is-6">
-                    A light is switched on/off a light with Zora
-                  </div>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card-image">
-                    <figure class="image video-container is-16by9">
-                        <a class="open-modal" data="https://www.youtube.com/embed/vwfiohaHe0M">
-                            <img src="https://i.ytimg.com/vi/vwfiohaHe0M/maxresdefault.jpg" alt="" srcset="">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                  <div class="title is-5">
-                    Zora plays Bingo
-                  </div>
-                  <div class="subtitle is-6">
-                    She tells numbers and I can ask her to repeat them and to speak slower/faster.
-                  </div>
-                </div>
-              </div>
             </div>
-          </section>
+        </div>
+        <div class="container">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-3 is-offset-3">
+                    <div class="columns">
+                        <div class="column">
+                            <a href="http://unica.it">
+                                <img src="https://upload.wikimedia.org/wikipedia/it/d/de/Logo_Universit%C3%A0_di_Cagliari.jpg"
+                                    alt="logo unica">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="colums">
+                        <div class="column is-full is-size-5 has-text-black">University Of Cagliari</div>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="columns">
+                        <div class="column">
+                            <a href="http://www.r2msolution.com/">
+                                <img src="https://www.r2msolution.com/wp-content/uploads/2017/05/R2M-Logo-1.jpg"
+                                    alt="logo r2m">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="colums">
+                        <div class="column is-full is-size-5 has-text-black">R2M Solution</div>
+                    </div>
+                </div>
+                <div class="column is-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image">
+                        <img src="" alt="Project image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="container has-text-centered">
+                            <p class="title is-4"></p>
+                            <p class="subtitle">
+                                <span class="tag is-medium is-info">Budget: &nbsp;<span class="budget"></span>€</span>
+                                <span class="tag is-medium is-info fromto">From &nbsp;<span class="from"></span>
+                                    &nbsp;to &nbsp;<span class="to"></span> </span>
+                                <a href="#" class="website">
+                                    <span class="tag is-medium is-link">
+                                        <i class="fas fa-link is-size-7"></i>
+                                        &nbsp;
+                                        Website
+                                    </span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content has-text-centered">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <!-- Media modal-->
@@ -213,22 +431,18 @@
         <div class="modal-background"></div>
         <div class="modal-content">
             <p class="video-container is-16by9">
-                <iframe id="src-video-modal" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:500px;height:350px;"></iframe>
+                <iframe id="src-video-modal" src="" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width:500px;height:350px;"></iframe>
             </p>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
-      </div>
+    </div>
 
     <!-- Return to top -->
     <a href="javascript:" id="return-to-top"><i class="fas fa-caret-up"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-		<script>
-		bulmaCarousel.attach('#carousel', {
-			slidesToScroll: 1,
-			slidesToShow: 4
-		});
-		</script>
 </body>
 
 </html>

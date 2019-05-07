@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Lato', sans-serif;
 }
 
@@ -36,7 +36,7 @@ html {
     box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
 }
 
-.peoplecard img{
+.peoplecard img {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -52,14 +52,13 @@ html {
 #people::before {
     content: '';
     position: absolute;
-    left: -25%;
-    width: 150%;
-    top: 10px;
+    left: 0;
+    width: 100%;
     height: 350px;
     background: hsl(217, 71%, 53%);
     transform: skewY(3deg);
-    transform-origin: top left;
     z-index: -1;
+    margin-top: -15px;
 }
 
 .slider-navigation-next {
@@ -73,32 +72,8 @@ html {
     color: #fff;
 }
 
-#people {
-    margin-bottom: 50px;
-}
-
 #people-list h3 {
     line-height: 20px;
-}
-
-#people .fa-twitter-square, 
-#people .fa-linkedin,
-#people .fa-github-square,
-#people .fa-facebook-square,
-#people .fa-globe {
-    color: hsl(0, 0%, 86%);
-}
-
-#people .fa-twitter-square:hover, 
-#people .fa-linkedin:hover,
-#people .fa-github-square:hover,
-#people .fa-facebook-square:hover,
-#people .fa-globe:hover {
-    color: hsl(0, 0%, 100%);
-}
-
-#projects, #people {
-    margin-top: 25px;
 }
 
 #project-list .thumb-logo {
@@ -107,8 +82,32 @@ html {
     margin: auto;
 }
 
-#project-list .thumb-img {
+#project-modal .thumb-logo {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    padding-top: 50px;
+}
+
+#project-list .thumb-img,
+#project-modal .thumb-img {
     object-fit: cover;
+}
+
+#collaboration .anchor{
+    margin-bottom: 15px;
+}
+
+#collaboration img {
+    height: 120px;
+}
+
+#tab-content .tab {
+    display: none;
+}
+  
+#tab-content .tab.is-active {
+    display: block;
 }
 
 #return-to-top {
@@ -167,6 +166,6 @@ html {
 
 @media only screen and (max-width: 768px) {
     #people::before {
-        height: 100%;
+        height: 150%;
     }
 }

@@ -1,0 +1,19 @@
+{
+    "array": [
+      {
+        "id": "OePbvELNJ54",
+        "title": "Play Chess With Zora",
+        "abstract": "Playing chess with Zora, that is connected to Google Assistant"
+      },
+      {
+        "id": "rrvY-f9Vz58",
+        "title": "Zora controlling light",
+        "abstract": "A light is switched on/off a light with Zora, she is connected to GA"
+      },
+      {
+        "id": "vwfiohaHe0M",
+        "title": "Zora plays Bingo",
+        "abstract": "She tells numbers and I can ask her to repeat them and to speak slower/faster"
+      }
+    ]
+}
