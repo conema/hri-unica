@@ -54,7 +54,7 @@ html {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 350px;
+    height: 550px;
     background: hsl(217, 71%, 53%);
     transform: skewY(3deg);
     z-index: -1;
@@ -82,11 +82,21 @@ html {
     margin: auto;
 }
 
+#project-list .tag {
+    white-space: normal;
+    min-height: 2em;
+    height: auto;
+}
+
 #project-modal .thumb-logo {
     width: 50%;
     height: auto;
     margin: auto;
     padding-top: 50px;
+}
+
+#project-modal .subtitle {
+    line-height: 35px;
 }
 
 #project-list .thumb-img,
@@ -100,10 +110,15 @@ html {
 
 #collaboration img {
     height: 120px;
+    max-width: none;
 }
 
 #tab-content .tab {
     display: none;
+}
+
+.is-display-none {
+    display: none !important;
 }
   
 #tab-content .tab.is-active {
@@ -166,6 +181,6 @@ html {
 
 @media only screen and (max-width: 768px) {
     #people::before {
-        height: 150%;
+        height: 178%;
     }
 }

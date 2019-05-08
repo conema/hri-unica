@@ -3,17 +3,38 @@
       {
         "id": "OePbvELNJ54",
         "title": "Play Chess With Zora",
-        "abstract": "Playing chess with Zora, that is connected to Google Assistant"
+        "abstract": "Playing chess with Zora, that is connected to Google Assistant",
+        "thumbnail": ""
       },
       {
         "id": "rrvY-f9Vz58",
         "title": "Zora controlling light",
-        "abstract": "A light is switched on/off a light with Zora, she is connected to GA"
+        "abstract": "A light is switched on/off a light with Zora, she is connected to GA",
+        "thumbnail": ""
       },
       {
         "id": "vwfiohaHe0M",
         "title": "Zora plays Bingo",
-        "abstract": "She tells numbers and I can ask her to repeat them and to speak slower/faster"
+        "abstract": "She tells numbers and I can ask her to repeat them and to speak slower/faster",
+        "thumbnail": ""
+      },
+      {
+        "id": "CC9NzlbF0gQ",
+        "title": "Robot Action Ontology",
+        "abstract": "Humanoid Robot Obeys Human Action Commands through a Robot Action Ontology",
+        "thumbnail": ""
+      },
+      {
+        "id": "hoJYHLecZMs",
+        "title": "Deep Learning",
+        "abstract": "Deep Learning and Sentiment Analysis for Human-Robot Interaction",
+        "thumbnail": ""
+      },
+      {
+        "id": "WLjUPBTtdkE",
+        "title": "Object Detection",
+        "abstract": "Test of the Zora object detection prototype based on TensorFlow models",
+        "thumbnail": "https://img.youtube.com/vi/WLjUPBTtdkE/hqdefault.jpg"
       }
     ]
 }

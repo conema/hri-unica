@@ -55,7 +55,7 @@ document.addEventListener("videosLoaded", () => {
 document.addEventListener("videosLoaded", () => {
   bulmaCarousel.attach('#project-list', {
     slidesToScroll: 1,
-    slidesToShow: 4
+    slidesToShow: 3
   });
 });
 
@@ -72,7 +72,7 @@ function loadJSON(callback, path) {
   xobj.send(null);
 }
 
-// Load project
+// Load projects
 document.addEventListener('DOMContentLoaded', () => {
   loadJSON(function (response) {
     var projectHTML = document.querySelector('#project-list');
@@ -106,7 +106,15 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="card-content">
                 <p class="title is-5">` + project.name + `</p>
-                <p class="subtitle is-6">` + project.abstract + `</p>
+                <p class="subtitle is-6">` + project.abstract + `</p>`;
+
+      if(project.ended){
+        content += `<span class="tag is-success">Ended</span>`;
+      } else {
+        content += `<span class="tag is-warning">Ongoing</span>`;
+      }
+
+      content += `
                 <p><span class="tag is-dark">Budget: ` + project.budget + `€</span> </p>
                 <p><span class="tag is-dark">From ` + project.from + ` to ` + project.to + ` </span></p>
             </div>
@@ -128,8 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
     var peopleHTML = document.querySelector('#people-list');
     var peopleList = JSON.parse(response)
 
+    var countPeople = 0;
+    var totalContent = "";
+
     peopleList.array.forEach(function (person) {
-      content = `<div class="column is-3">
+      countPeople++;
+
+      if(countPeople == 1){
+        content = `<div class="columns is-centered has-text-centered">`;
+      } else if(countPeople%5 == 0) {
+        content = `</div><div class="columns is-centered has-text-centered">`;
+      } else {
+        content = "";
+      }
+
+      content += `<div class="column is-3">
         <figure class="image peoplecard">
             <img src="` + person.photo + `" alt="` + person.name + ` photo" srcset="" class="is-rounded">
             <figcaption>
@@ -171,8 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
-      peopleHTML.innerHTML += content;
+        totalContent += content;
     });
+
+    peopleHTML.innerHTML = totalContent;
 
 
   }, 'data/people.json');
@@ -191,7 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="card-image">
           <figure class="image video-container is-16by9">
               <a class="open-modal" data="https://www.youtube.com/embed/` + video.id + `?autoplay=1">
-                  <img src="https://img.youtube.com/vi/` + video.id + `/maxresdefault.jpg" alt="" srcset="">
+                  <img src="`;
+    if(video.thumbnail == ""){
+      content += "https://img.youtube.com/vi/" + video.id + "/maxresdefault.jpg";
+    }else{
+      content += video.thumbnail;
+    }
+    
+    
+    content += `" alt="" srcset="">
               </a>
           </figure>
       </div>
@@ -251,7 +282,22 @@ document.addEventListener("projectsLoaded", () => {
                 modal.querySelector(".budget").innerHTML = project.budget;
                 modal.querySelector(".from").innerHTML = project.from;
                 modal.querySelector(".to").innerHTML = project.to;
-                modal.querySelector(".website").href = project.link;
+
+                if(project.link != ""){
+                  modal.querySelector("#website").classList.remove("is-display-none")
+                  modal.querySelector("#website").href = project.link;
+                }else{
+                  modal.querySelector("#website").classList.add("is-display-none");
+                }
+
+                if(project.ended){
+                  modal.querySelector("#ongoing").classList.add("is-display-none")
+                  modal.querySelector("#ended").classList.remove("is-display-none")
+                } else {
+                  modal.querySelector("#ongoing").classList.remove("is-display-none")
+                  modal.querySelector("#ended").classList.add("is-display-none")
+                }
+                
                 modal.querySelector(".content").innerHTML = project.text;
               }
             });

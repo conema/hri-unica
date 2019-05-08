@@ -29,8 +29,11 @@
     <nav class="navbar is-fixed-top is-dark">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="#">
-                    <span class="is-size-3">HRI</span>
+                <a class="navbar-item" href="http://unica.it">
+                    <img src="img/unica.png" alt="Logo unica">
+                </a>
+                <a class="navbar-item" href="https://www.unica.it/unica/it/dip_matinfo.page">
+                    <img src="img/dmi.png" alt="Dipartimento Matematica ed Informatica">
                 </a>
                 <span class="navbar-burger burger" data-target="navbarMenuHeroA">
                     <span></span>
@@ -47,7 +50,7 @@
                         Projects
                     </a>
                     <a class="navbar-item" href="#people">
-                        People
+                        Team
                     </a>
                     <a class="navbar-item" href="#publications">
                         Publications
@@ -119,11 +122,11 @@
         <div class="container anchor">
             <div class="section-header columns has-text-centered is-centered">
                 <div class="column is-6">
-                    <h2 class="title has-text-white">People</h2>
+                    <h2 class="title has-text-white">Team</h2>
                 </div>
             </div>
 
-            <div id="people-list" class="columns is-centered has-text-centered">
+            <div id="people-list">
 
             </div>
         </div>
@@ -362,7 +365,7 @@
                     <div class="columns">
                         <div class="column">
                             <a href="http://unica.it">
-                                <img src="https://upload.wikimedia.org/wikipedia/it/d/de/Logo_Universit%C3%A0_di_Cagliari.jpg"
+                                <img src="img/unica.png"
                                     alt="logo unica">
                             </a>
                         </div>
@@ -404,10 +407,13 @@
                         <div class="container has-text-centered">
                             <p class="title is-4"></p>
                             <p class="subtitle">
+                                <span id="ongoing" class="tag is-warning is-medium">Ongoing</span>
+                                <span id="ended" class="tag is-success is-medium">Ended</span>
+                                      
                                 <span class="tag is-medium is-info">Budget: &nbsp;<span class="budget"></span>€</span>
                                 <span class="tag is-medium is-info fromto">From &nbsp;<span class="from"></span>
                                     &nbsp;to &nbsp;<span class="to"></span> </span>
-                                <a href="#" class="website">
+                                <a href="#" id="website" target="_blank">
                                     <span class="tag is-medium is-link">
                                         <i class="fas fa-link is-size-7"></i>
                                         &nbsp;
