@@ -79,9 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
     var projectList = JSON.parse(response)
 
     projectList.array.forEach(function (project) {
-      content = `
+      var content = `
         <div class="column is-offset-1">
-        <article class="card">
+        <article class="card has-ribbon">`;
+
+      if (project.ended) {
+        content += `<div class="ribbon is-warning">Ended</div>`;
+      } else {
+        content += `<div class="ribbon is-success">Ongoing</div>`;
+      }
+
+      content += `
             <div class="card-image">
             <a class="open-modal open-project" title="` + project.name + `">
                 <figure class="image is-4by3">
@@ -106,15 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="card-content">
                 <p class="title is-5">` + project.name + `</p>
-                <p class="subtitle is-6">` + project.abstract + `</p>`;
-
-      if(project.ended){
-        content += `<span class="tag is-success">Ended</span>`;
-      } else {
-        content += `<span class="tag is-warning">Ongoing</span>`;
-      }
-
-      content += `
+                <p class="subtitle is-6">` + project.abstract + `</p>
                 <p><span class="tag is-dark">Budget: ` + project.budget + `€</span> </p>
                 <p><span class="tag is-dark">From ` + project.from + ` to ` + project.to + ` </span></p>
             </div>
@@ -142,12 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
     peopleList.array.forEach(function (person) {
       countPeople++;
 
-      if(countPeople == 1){
-        content = `<div class="columns is-centered has-text-centered">`;
-      } else if(countPeople%5 == 0) {
-        content = `</div><div class="columns is-centered has-text-centered">`;
+      if (countPeople == 1) {
+        var content = `<div class="columns is-centered has-text-centered">`;
+      } else if (countPeople % 4 == 0) {
+        var content = `</div><div class="columns is-centered has-text-centered">`;
       } else {
-        content = "";
+        var content = "";
       }
 
       content += `<div class="column is-3">
@@ -192,13 +192,91 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
-        totalContent += content;
+      totalContent += content;
     });
 
     peopleHTML.innerHTML = totalContent;
 
 
   }, 'data/people.json');
+});
+
+// Variable for news
+const newsForRow = 3;
+const newsForPage = 6;
+
+// Create News HTML
+function createNewsContent(start, end) {
+  loadJSON(function (response) {
+    var mediaHTML = document.querySelector('#news-list');
+    var newsList = JSON.parse(response);
+    end--; //Count start from 0
+
+    var newsCount = 0;
+
+    newsList.array.forEach(function (news) {
+      if (newsCount >= start && newsCount <= end) {
+        if (newsCount % newsForRow == 0 || newsCount == 0) {
+          var content = `<div class="column is-3 has-ribbon-bottom">`;
+        } else {
+          var content = `<div class="column is-offset-1 is-3 has-ribbon-bottom">`;
+        }
+
+        content += `
+                      <a href="` + news.link + `" target="_blank">
+                          <div class="ribbon is-dark">` + news.link.match("^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)")[1] + `</div>
+                          <h3 class="title is-size-5">` + news.title + `</h3> 
+                          <p class="subtitle is-size-6">` + news.abstract + `</p><br>
+                      </a>
+                  </div>`;
+
+        mediaHTML.innerHTML += content;
+      }
+
+      newsCount++;
+    });
+  }, 'data/news.json');
+}
+
+// Load News
+document.addEventListener('DOMContentLoaded', () => {
+  createNewsContent(0, newsForPage);
+});
+
+// Create pagination
+document.addEventListener('DOMContentLoaded', () => {
+  loadJSON(function (response) {
+    var newsList = JSON.parse(response);
+    var paginationHTML = document.querySelector('#news-pagination');
+    var totalPages = Math.ceil(newsList.array.length / 6);
+
+    for (var i = 2; i <= totalPages; i++) {
+      paginationHTML.innerHTML += `<li><a class="pagination-link" aria-label="Goto page ` + i + `" go-to="` + i + `">` + i + `</a></li>`;
+    }
+
+    document.dispatchEvent(new Event("paginationLoaded"));
+
+  }, 'data/news.json');
+});
+
+// Update news and pagination
+document.addEventListener("paginationLoaded", () => {
+  var pages = document.querySelectorAll('#news-pagination .pagination-link');
+
+  Array.from(pages).forEach(function (element) {
+    element.addEventListener("click", function () {
+      Array.from(pages).forEach(function (element) {
+        element.classList.remove('is-current');
+      });
+
+      document.querySelector('#news-list').innerHTML = "";
+
+      // Eg. for page 2 and 6 news: 5 * (2-1) = start from news 5, 5*2 = end news 10
+      createNewsContent(newsForPage * (this.getAttribute('go-to') - 1), newsForPage * this.getAttribute('go-to'));
+
+      element.classList.add("is-current");
+    });
+  });
 });
 
 // Load Media
@@ -208,21 +286,21 @@ document.addEventListener('DOMContentLoaded', () => {
     var videoList = JSON.parse(response)
 
     videoList.array.forEach(function (video) {
-      content = `
+      var content = `
       <div class="column"
       <div class="card">
       <div class="card-image">
           <figure class="image video-container is-16by9">
               <a class="open-modal" data="https://www.youtube.com/embed/` + video.id + `?autoplay=1">
                   <img src="`;
-    if(video.thumbnail == ""){
-      content += "https://img.youtube.com/vi/" + video.id + "/maxresdefault.jpg";
-    }else{
-      content += video.thumbnail;
-    }
-    
-    
-    content += `" alt="" srcset="">
+      if (video.thumbnail == "") {
+        content += "https://img.youtube.com/vi/" + video.id + "/maxresdefault.jpg";
+      } else {
+        content += video.thumbnail;
+      }
+
+
+      content += `" alt="" srcset="">
               </a>
           </figure>
       </div>
@@ -238,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
         `;
 
-        mediaHTML.innerHTML += content;
+      mediaHTML.innerHTML += content;
     });
 
     document.dispatchEvent(new Event("videosLoaded"));
@@ -283,21 +361,21 @@ document.addEventListener("projectsLoaded", () => {
                 modal.querySelector(".from").innerHTML = project.from;
                 modal.querySelector(".to").innerHTML = project.to;
 
-                if(project.link != ""){
+                if (project.link != "") {
                   modal.querySelector("#website").classList.remove("is-display-none")
                   modal.querySelector("#website").href = project.link;
-                }else{
+                } else {
                   modal.querySelector("#website").classList.add("is-display-none");
                 }
 
-                if(project.ended){
+                if (project.ended) {
                   modal.querySelector("#ongoing").classList.add("is-display-none")
                   modal.querySelector("#ended").classList.remove("is-display-none")
                 } else {
                   modal.querySelector("#ongoing").classList.remove("is-display-none")
                   modal.querySelector("#ended").classList.add("is-display-none")
                 }
-                
+
                 modal.querySelector(".content").innerHTML = project.text;
               }
             });
@@ -365,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     selected.classList.add('is-active');
   }
-  
+
   function updateActiveContent(selected) {
     CONTENT.forEach((item) => {
       if (item && item.classList.contains('is-active')) {

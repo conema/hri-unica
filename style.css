@@ -25,7 +25,7 @@ html {
 .zora-photo {
     z-index: 1;
     position: absolute;
-    top: 18%;
+    top: 16%;
     pointer-events: none;
     right: 12%;
     width: 400px;
@@ -76,6 +76,14 @@ html {
     line-height: 20px;
 }
 
+#news-list .column {
+    margin-top: 30px;
+}
+
+#news-list .column:hover {
+    background-color: hsl(0, 0%, 96%);
+}
+
 #project-list .thumb-logo {
     width: 250px;
     height: auto;
@@ -104,7 +112,7 @@ html {
     object-fit: cover;
 }
 
-#collaboration .anchor{
+#collaboration .anchor {
     margin-bottom: 15px;
 }
 
@@ -120,7 +128,7 @@ html {
 .is-display-none {
     display: none !important;
 }
-  
+
 #tab-content .tab.is-active {
     display: block;
 }
