@@ -2,6 +2,11 @@
     font-family: 'Lato', sans-serif;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -189,6 +194,6 @@ html {
 
 @media only screen and (max-width: 768px) {
     #people::before {
-        height: 178%;
+        height: 1250px;
     }
 }

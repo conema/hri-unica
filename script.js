@@ -29,25 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  var topscrollTo = function () {
-    if (window.scrollY != 0) {
-      setTimeout(function () {
-        window.scrollTo(0, window.scrollY - 200);
-        topscrollTo();
-      }, 5);
-    }
-  }
   // Listeners
   window.addEventListener('scroll', btnReveal);
-  btnTop.addEventListener('click', topscrollTo);
-
 });
 
 // Media carousel
 document.addEventListener("videosLoaded", () => {
   bulmaCarousel.attach('#video-carousel', {
     slidesToScroll: 1,
-    slidesToShow: 4
+    slidesToShow: 4,
+    navigationSwipe: true
   });
 });
 
@@ -55,7 +46,8 @@ document.addEventListener("videosLoaded", () => {
 document.addEventListener("videosLoaded", () => {
   bulmaCarousel.attach('#project-list', {
     slidesToScroll: 1,
-    slidesToShow: 3
+    slidesToShow: 3,
+    navigationSwipe: true
   });
 });
 
