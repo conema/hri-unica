@@ -2,7 +2,7 @@
     "array": [
       {
         "name": "Diego Reforgiato Recupero",
-        "photo": "img/diego.jpg",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/diego.jpg",
         "role": "Director",
         "linkedin": "https://it.linkedin.com/in/diego-reforgiato-recupero-6138104",
         "facebook": "https://www.facebook.com/diegoref",
@@ -12,7 +12,7 @@
       },
       {
         "name": "Emanuele Concas",
-        "photo": "https://pbs.twimg.com/profile_images/1025746020456701952/VUi_vWTE_400x400.jpg",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/emanuele.jpg",
         "role": "Researcher",
         "linkedin": "",
         "facebook": "https://www.facebook.com/conema0",
@@ -22,7 +22,7 @@
       },
       {
         "name": "Danilo Dessì",
-        "photo": "http://people.unica.it/danilodessi/files/2012/09/20160922_132900-e1478018197140-150x150.jpg",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/danilo.jpg",
         "role": "Researcher",
         "linkedin": "",
         "facebook": "",
@@ -32,7 +32,7 @@
       },
       {
         "name": "Rubén Alonso",
-        "photo": "https://www.r2msolution.com/wp-content/uploads/2019/01/Staff-29.jpg",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/rubenjpg",
         "role": "Researcher",
         "linkedin": "",
         "facebook": "",
@@ -42,11 +42,21 @@
       },
       {
         "name": "Massimiliano Raciti",
-        "photo": "https://www.r2msolution.com/wp-content/uploads/2019/01/Staff-31.jpg",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/massimiliano.jpg",
         "role": "Researcher",
         "linkedin": "https://it.linkedin.com/in/massimiliano-raciti-2078b32",
         "facebook": "",
         "twitter": "",
+        "github": "",
+        "website": ""
+      },
+      {
+        "name": "Ivano Agosta",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/ivano.jpg",
+        "role": "Researcher",
+        "linkedin": "https://www.linkedin.com/in/agostaivano/",
+        "facebook": "https://www.facebook.com/ivano.agosta",
+        "twitter": "https://twitter.com/ivanoagosta",
         "github": "",
         "website": ""
       }

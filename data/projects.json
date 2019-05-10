@@ -2,7 +2,7 @@
     "array": [
       {
         "name": "PhilHumans",
-        "thumbnail": "https://www.philhumans.eu/wp-content/uploads/2018/11/cropped-Logo-02.png",
+        "thumbnail": "https://raw.githubusercontent.com/conema/hri-unica/master/img/projects/philhumans.png",
         "logo": true,
         "ended": false,
         "budget": "2M",
@@ -14,7 +14,7 @@
       },
       {
         "name": "SI-ROBOTICS",
-        "thumbnail": "http://www.robot-era.eu/robotera/installazioni/robotera/risorse/img_testata_05.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/conema/hri-unica/master/img/projects/si-robitcs.jpg",
         "logo": false,
         "ended": false,
         "budget": "9M",
@@ -26,7 +26,7 @@
       },
       {
         "name": "MARIO",
-        "thumbnail": "http://www.mario-project.eu/portal/images/mario-logo.png",
+        "thumbnail": "https://raw.githubusercontent.com/conema/hri-unica/master/img/projects/mario.png",
         "logo": true,
         "ended": true,
         "budget": "4M",
