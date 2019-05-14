@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Listeners
+  // Listener
   window.addEventListener('scroll', btnReveal);
 });
 
@@ -132,15 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
     var totalContent = "";
 
     peopleList.array.forEach(function (person) {
-      countPeople++;
-
-      if (countPeople == 1) {
-        var content = `<div class="columns is-centered has-text-centered">`;
-      } else if (countPeople % 4 == 0) {
+      if (countPeople % 3 == 0) {
         var content = `</div><div class="columns is-centered has-text-centered">`;
       } else {
         var content = "";
       }
+
+      countPeople++;
 
       content += `<div class="column is-3">
         <figure class="image peoplecard">
@@ -187,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       totalContent += content;
     });
 
-    peopleHTML.innerHTML = totalContent;
+    peopleHTML.innerHTML = `<div class="columns is-centered has-text-centered">` + totalContent + "</div>";
 
 
   }, 'data/people.json');
@@ -410,11 +408,120 @@ document.addEventListener("projectsLoaded", () => {
   });
 });
 
-// Tabs
+//Load Publications
+function loadPublications(callback) {
+  loadJSON(function (response) {
+    var publicationsMap = new Map();
+    var publicationsList = JSON.parse(response);
 
+    publicationsMap.set(2018, [{ title: "test", doi: "asd", authors: "1pinco" }]);
+
+    publicationsList["search-results"].entry.forEach(function (publication) {
+      var date = new Date(publication['prism:coverDate']);
+
+      if (!publicationsMap.has(date.getFullYear())) {
+        publicationsMap.set(date.getFullYear(), []);
+      }
+
+      var authors = []
+
+      publication.author.forEach(function (author) {
+        authors.push(author.authname);
+      });
+
+      publicationsMap.get(date.getFullYear()).push({ title: publication["dc:title"], doi: publication["prism:doi"], authors: authors.join(", ") });
+    });
+
+    callback(publicationsMap);
+  }, 'data/publications/scopusSearchResp.json');
+}
+
+// Load years
 document.addEventListener('DOMContentLoaded', () => {
+  loadPublications(function (publicationsMap) {
+    var years = [];
+
+    for (var year of publicationsMap.keys()) {
+      years.push(year);
+    }
+
+    years.sort(function (a, b) {
+      return new Date(b.toString()) - new Date(a.toString());
+    });
+
+    var publicationsYearsHtml = document.querySelector("#publications-years");
+
+    publicationsYearsHtml.innerHTML += '<li data-tab="1"><a>All</a></li>';
+
+    years.forEach(function (year) {
+      if (year == Math.max.apply(null, years)) {
+        publicationsYearsHtml.innerHTML += '<li data-tab="' + year + '" class="is-active"><a>' + year + '</a></li>';
+      } else {
+        publicationsYearsHtml.innerHTML += '<li data-tab="' + year + '"><a>' + year + '</a></li>';
+      }
+    });
+
+    loadPublicationsYear(Math.max.apply(null, years));
+
+    document.dispatchEvent(new Event("publicationsLoaded"));
+  });
+});
+
+// Load publications year
+function loadPublicationsYear(year) {
+  loadPublications(function (publicationsMap) {
+    var publicationsContent = document.querySelector("#tab-content-research");
+
+    var totalContent = ""
+
+    for (var entry of publicationsMap) {
+      if (year == 1) {
+        totalContent += `<span class="tag is-dark is-medium">` + entry[0] + `</span>`;
+        var map = entry[1];
+      } else {
+        var map = publicationsMap.get(parseInt(year));
+      }
+
+      totalContent += `<div class="columns is-multiline">`;
+
+      for (var publication of map) {
+        totalContent += `<div class="column is-6">
+          <div class="content">
+              <ul>
+                  <li>
+                  ` + publication.authors + ` <br>
+                      <span class="has-text-weight-bold">` + publication.title + `</span><br>
+                      Iranian Journal of Science and Technology<br>
+                      Transactions A: Science<br>`;
+
+        if(publication.doi){
+          totalContent += `DOI: ` + publication.doi + `<br>
+                      <a href="https://dx.doi.org/` + publication.doi + `" target="_blank">https://dx.doi.org/` + publication.doi + `</a>`;
+        }
+        
+        totalContent += `
+                         </li>
+              </ul>
+          </div>
+          </div>`;
+      }
+
+      if (year != 1) {
+        break;
+      } else {
+        totalContent += "</div>"
+      }
+    }
+
+    totalContent += "</div>"
+
+    publicationsContent.innerHTML = totalContent;
+  });
+}
+
+// Tabs
+document.addEventListener('publicationsLoaded', () => {
   const TABS = document.querySelectorAll('.tabs li');
-  const CONTENT = document.querySelectorAll('#tab-content .tab');
 
   TABS.forEach((tab) => {
     tab.addEventListener('click', (e) => {
@@ -422,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let selected = tab.getAttribute('data-tab');
       updateActiveTab(tab);
-      updateActiveContent(selected);
+      loadPublicationsYear(selected);
     });
   });
 
@@ -434,17 +541,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     selected.classList.add('is-active');
-  }
-
-  function updateActiveContent(selected) {
-    CONTENT.forEach((item) => {
-      if (item && item.classList.contains('is-active')) {
-        item.classList.remove('is-active');
-      }
-      let data = item.getAttribute('data-content');
-      if (data === selected) {
-        item.classList.add('is-active');
-      }
-    });
   }
 });

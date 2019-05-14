@@ -34,7 +34,7 @@
         "name": "Rubén Alonso",
         "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/ruben.jpg",
         "role": "Researcher",
-        "linkedin": "",
+        "linkedin": "https://www.linkedin.com/in/rubenalonso/",
         "facebook": "",
         "twitter": "",
         "github": "",
@@ -59,6 +59,16 @@
         "twitter": "https://twitter.com/ivanoagosta",
         "github": "",
         "website": ""
+      },
+      {
+        "name": "Sergio Consoli",
+        "photo": "https://raw.githubusercontent.com/conema/hri-unica/master/img/team/sergio.jpg",
+        "role": "Researcher",
+        "linkedin": "https://www.linkedin.com/in/sergio-c-865a90142",
+        "facebook": "",
+        "twitter": "",
+        "github": "",
+        "website": "http://europa.eu/whoiswho/public/index.cfm?fuseaction=idea.hierarchy&nodeID=5636036&personID=510814"
       }
     ]
   }
