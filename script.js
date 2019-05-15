@@ -52,21 +52,23 @@ document.addEventListener("videosLoaded", () => {
 });
 
 // Json management
-function loadJSON(callback, path) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', path, true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null);
+function loadJSON(path) {
+  return new Promise(function (resolve, reject) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', path, true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        resolve(xobj.responseText);
+      }
+    };
+    xobj.send(null);
+  });
 }
 
 // Load projects
 document.addEventListener('DOMContentLoaded', () => {
-  loadJSON(function (response) {
+  loadJSON('data/projects.json').then(function (response) {
     var projectHTML = document.querySelector('#project-list');
     var projectList = JSON.parse(response)
 
@@ -119,12 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.dispatchEvent(new Event("projectsLoaded"));
 
-  }, 'data/projects.json');
+  });
 });
 
 // Load people
 document.addEventListener('DOMContentLoaded', () => {
-  loadJSON(function (response) {
+  loadJSON('data/people.json').then(function (response) {
     var peopleHTML = document.querySelector('#people-list');
     var peopleList = JSON.parse(response)
 
@@ -186,9 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     peopleHTML.innerHTML = `<div class="columns is-centered has-text-centered">` + totalContent + "</div>";
-
-
-  }, 'data/people.json');
+  });
 });
 
 // Variable for news
@@ -197,7 +197,7 @@ const newsForPage = 6;
 
 // Create News HTML
 function createNewsContent(start, end) {
-  loadJSON(function (response) {
+  loadJSON('data/news.json').then(function (response) {
     var mediaHTML = document.querySelector('#news-list');
     var newsList = JSON.parse(response);
     end--; //Count start from 0
@@ -225,7 +225,7 @@ function createNewsContent(start, end) {
 
       newsCount++;
     });
-  }, 'data/news.json');
+  });
 }
 
 // Load News
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Create pagination
 document.addEventListener('DOMContentLoaded', () => {
-  loadJSON(function (response) {
+  loadJSON('data/news.json').then(function (response) {
     var newsList = JSON.parse(response);
     var paginationHTML = document.querySelector('#news-pagination');
     var totalPages = Math.ceil(newsList.array.length / 6);
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.dispatchEvent(new Event("paginationLoaded"));
 
-  }, 'data/news.json');
+  });
 });
 
 // Update news and pagination
@@ -271,7 +271,7 @@ document.addEventListener("paginationLoaded", () => {
 
 // Load Media
 document.addEventListener('DOMContentLoaded', () => {
-  loadJSON(function (response) {
+  loadJSON('data/videos.json').then(function (response) {
     var mediaHTML = document.querySelector('#video-carousel');
     var videoList = JSON.parse(response)
 
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.dispatchEvent(new Event("videosLoaded"));
 
-  }, 'data/videos.json');
+  });
 });
 
 // Modal
@@ -319,7 +319,7 @@ document.addEventListener("projectsLoaded", () => {
   document.addEventListener("videosLoaded", () => {
     var modals = document.querySelectorAll('a.open-modal')
 
-    loadJSON(function (response) {
+    loadJSON('data/projects.json').then(function (response) {
       var projectList = JSON.parse(response)
 
       modals.forEach(function (i) {
@@ -404,36 +404,59 @@ document.addEventListener("projectsLoaded", () => {
 
         });
       });
-    }, 'data/projects.json');
+    });
   });
 });
 
+// Search keywords
+function hasKeyword(text, keywordList) {
+  var found = false;
+
+  for (keyword of keywordList) {
+    found = found || text.includes(keyword);
+
+    if (found) {
+      break;
+    }
+  }
+
+  return found;
+}
+
 //Load Publications
 function loadPublications(callback) {
-  loadJSON(function (response) {
+  loadJSON('data/publications/nJson.json').then(async function (response) {
     var publicationsMap = new Map();
-    var publicationsList = JSON.parse(response);
+    var nJson = JSON.parse(response);
 
-    publicationsMap.set(2018, [{ title: "test", doi: "asd", authors: "1pinco" }]);
+    for (var i = 0; i < nJson["nJson"]; i++) {
+      await loadJSON('data/publications/file' + i + '.json').then(function (response) {
+        var publicationsList = JSON.parse(response);
 
-    publicationsList["search-results"].entry.forEach(function (publication) {
-      var date = new Date(publication['prism:coverDate']);
+        //publicationsMap.set(2018, [{ title: "test", doi: "asd", authors: "1pinco" }]);
 
-      if (!publicationsMap.has(date.getFullYear())) {
-        publicationsMap.set(date.getFullYear(), []);
-      }
+        publicationsList["search-results"].entry.forEach(function (publication) {
+          if (hasKeyword(publication["dc:title"], ["Sentiment analysis", "robot", "semantic", "ontology", "healthcare", "cognitive", "big data", "mario", "philhumans", "frame", "machine learning", "deep learning", "neural", "embeddings", "tracking", "emotion", "linked", "knowledge"])) {
+            var date = new Date(publication['prism:coverDate']);
 
-      var authors = []
+            if (!publicationsMap.has(date.getFullYear())) {
+              publicationsMap.set(date.getFullYear(), []);
+            }
 
-      publication.author.forEach(function (author) {
-        authors.push(author.authname);
+            var authors = []
+
+            publication.author.forEach(function (author) {
+              authors.push(author.authname);
+            });
+
+            publicationsMap.get(date.getFullYear()).push({ title: publication["dc:title"], doi: publication["prism:doi"], authors: authors.join(", ") });
+          }
+        });
       });
-
-      publicationsMap.get(date.getFullYear()).push({ title: publication["dc:title"], doi: publication["prism:doi"], authors: authors.join(", ") });
-    });
+    }
 
     callback(publicationsMap);
-  }, 'data/publications/scopusSearchResp.json');
+  });
 }
 
 // Load years
@@ -490,15 +513,13 @@ function loadPublicationsYear(year) {
               <ul>
                   <li>
                   ` + publication.authors + ` <br>
-                      <span class="has-text-weight-bold">` + publication.title + `</span><br>
-                      Iranian Journal of Science and Technology<br>
-                      Transactions A: Science<br>`;
+                      <span class="has-text-weight-bold">` + publication.title + `</span><br>`;
 
-        if(publication.doi){
+        if (publication.doi) {
           totalContent += `DOI: ` + publication.doi + `<br>
                       <a href="https://dx.doi.org/` + publication.doi + `" target="_blank">https://dx.doi.org/` + publication.doi + `</a>`;
         }
-        
+
         totalContent += `
                          </li>
               </ul>
