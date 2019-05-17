@@ -1,0 +1,24 @@
+{
+    "array": [
+      {
+        "title": "Action ontology for Zora",
+        "abstract": "This software engine allows the Zora humanoid robot to execute natural language commands spoken by the user. To provide the robot with knowledge, we have defined an action robot ontology.",
+        "link": "https://github.com/Fspiga13/Humanoid-Robot-Obeys-Human-Action-Commands-through-a-Robot-Action-Ontology"
+      },
+      {
+        "title": "Google Assistant server",
+        "abstract": "GA-Server is a simple script that works as a server, it receives audio chunks from a client and it forwards them to Google Assistant. This script can be used (with a client) when you want to integrate GA into a device that is not powerful enough or in a device where the SDK couldn't be installed.",
+        "link": "https://github.com/conema/GA-Server/"
+      },
+      {
+        "title": "Google Assistant for Choregraphe",
+        "abstract": "This repository contains the source of a Choregraphe project that allows robots by Softbank Robotics to behave like a Google Assistant, it responds to normal voice command/questions (eg. 'Who is Obama?', 'What time is it?', 'Turn off the light', etc...) like a normal Google Home would do.",
+        "link": "https://github.com/conema/Choregraphe-GA/"
+      },
+      {
+        "title": "Object detection for Zora",
+        "abstract": "This application is a simulation of server-side object detection into the prototype with Zora robot, using models loaded in the TensorFlow ModelServer.",
+        "link": "https://github.com/fabseulo/Zora-Object-Detection"
+      }
+    ]
+}

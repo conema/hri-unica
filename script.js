@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="card-content">
                 <p class="title is-5">` + project.name + `</p>
-                <p class="subtitle is-6">` + project.abstract + `</p>
+                <p class="subtitle is-6 has-text-justified">` + project.abstract + `</p>
                 <p><span class="tag is-dark">Budget: ` + project.budget + `€</span> </p>
                 <p><span class="tag is-dark">From ` + project.from + ` to ` + project.to + ` </span></p>
             </div>
@@ -195,10 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const newsForRow = 3;
 const newsForPage = 6;
 
-// Create News HTML
-function createNewsContent(start, end) {
-  loadJSON('data/news.json').then(function (response) {
-    var mediaHTML = document.querySelector('#news-list');
+// Create News HTML/Resources
+function createNewsContent(start, end, data, selector) {
+  loadJSON(data).then(function (response) {
+    var mediaHTML = document.querySelector(selector);
     var newsList = JSON.parse(response);
     end--; //Count start from 0
 
@@ -216,7 +216,7 @@ function createNewsContent(start, end) {
                       <a href="` + news.link + `" target="_blank">
                           <div class="ribbon is-dark">` + news.link.match("^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)")[1] + `</div>
                           <h3 class="title is-size-5">` + news.title + `</h3> 
-                          <p class="subtitle is-size-6">` + news.abstract + `</p><br>
+                          <p class="subtitle is-size-6 has-text-justified">` + news.abstract + `</p><br>
                       </a>
                   </div>`;
 
@@ -228,30 +228,40 @@ function createNewsContent(start, end) {
   });
 }
 
-// Load News
+// Load News/Resource
 document.addEventListener('DOMContentLoaded', () => {
-  createNewsContent(0, newsForPage);
+  createPagination('data/news.json', '#news-pagination');
+  createPagination('data/resources.json', '#resources-pagination');
+  createNewsContent(0, newsForPage, 'data/news.json', '#news-list');
+  createNewsContent(0, newsForPage, 'data/resources.json', '#resources-list');
+
+  document.addEventListener('paginationLoaded#news-pagination', () => {
+    loadPagination('#news-pagination .pagination-link', '#news-list', 'data/news.json');
+  });
+
+  document.addEventListener('paginationLoaded#resources-pagination', () => {
+    loadPagination('#resources-pagination .pagination-link', '#resources-list', 'data/resources.json');
+  });
 });
 
 // Create pagination
-document.addEventListener('DOMContentLoaded', () => {
-  loadJSON('data/news.json').then(function (response) {
+function createPagination(data, selector) {
+  loadJSON(data).then(function (response) {
     var newsList = JSON.parse(response);
-    var paginationHTML = document.querySelector('#news-pagination');
+    var paginationHTML = document.querySelector(selector);
     var totalPages = Math.ceil(newsList.array.length / 6);
 
     for (var i = 2; i <= totalPages; i++) {
       paginationHTML.innerHTML += `<li><a class="pagination-link" aria-label="Goto page ` + i + `" go-to="` + i + `">` + i + `</a></li>`;
     }
 
-    document.dispatchEvent(new Event("paginationLoaded"));
-
+    document.dispatchEvent(new Event("paginationLoaded" + selector));
   });
-});
+}
 
-// Update news and pagination
-document.addEventListener("paginationLoaded", () => {
-  var pages = document.querySelectorAll('#news-pagination .pagination-link');
+// Load news and resources
+function loadPagination(selectorPages, selectorList, data){
+  var pages = document.querySelectorAll(selectorPages);
 
   Array.from(pages).forEach(function (element) {
     element.addEventListener("click", function () {
@@ -259,15 +269,15 @@ document.addEventListener("paginationLoaded", () => {
         element.classList.remove('is-current');
       });
 
-      document.querySelector('#news-list').innerHTML = "";
+      document.querySelector(selectorList).innerHTML = "";
 
       // Eg. for page 2 and 6 news: 5 * (2-1) = start from news 5, 5*2 = end news 10
-      createNewsContent(newsForPage * (this.getAttribute('go-to') - 1), newsForPage * this.getAttribute('go-to'));
+      createNewsContent(newsForPage * (this.getAttribute('go-to') - 1), newsForPage * this.getAttribute('go-to'), data, selectorList);
 
       element.classList.add("is-current");
     });
   });
-});
+}
 
 // Load Media
 document.addEventListener('DOMContentLoaded', () => {
@@ -298,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="title is-5">
             ` + video.title + `
           </div>
-          <div class="subtitle is-6">
+          <div class="subtitle is-6 has-text-justified">
           ` + video.abstract + `
           </div>
       </div>

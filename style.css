@@ -11,6 +11,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.hero .subtitle a {
+    text-decoration: underline;
+}
+
 .hero-background {
     position: absolute;
     width: 100%;
