@@ -11,6 +11,12 @@ html {
     scroll-behavior: smooth;
 }
 
+.navbar{
+    -webkit-box-shadow: 0px 3px 22px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 22px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 22px -7px rgba(0,0,0,0.75);
+}
+
 .hero .subtitle a {
     text-decoration: underline;
 }
