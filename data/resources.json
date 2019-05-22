@@ -1,5 +1,10 @@
 {
     "array": [
+	  {
+		"title": "NAO/Zora Architecture for GA",
+        "abstract": "More than the default behavior of a GA device, the robot, with this project can run custom Choregraphe projects, by saying something like \"execute object recognition\". This projects have 4 sub-projects: Action Commands, Object Detection, Sentiment Analysis and Bingo.",
+        "link": "https://github.com/conema/ZAGA"
+	  },
       {
         "title": "Action ontology for Zora",
         "abstract": "This software engine allows the Zora humanoid robot to execute natural language commands spoken by the user. To provide the robot with knowledge, we have defined an action robot ontology.",
