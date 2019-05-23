@@ -24,6 +24,11 @@
         "title": "Object detection for Zora",
         "abstract": "This application is a simulation of server-side object detection into the prototype with Zora robot, using models loaded in the TensorFlow ModelServer.",
         "link": "https://github.com/fabseulo/Zora-Object-Detection"
+      },
+      {
+        "title": "Polarity for Zora",
+        "abstract": "NAO/Zora can automatically understand the polarity of what the user says. Based on the sentiment, the robot will make a neutral, positive or negative animation.",
+        "link": "https://github.com/conema/nao-zora-polarity"
       }
     ]
 }
